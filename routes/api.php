@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QueueController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route::apiResource('queue', QueueController::class);
+
+Route::get('queue/store',[QueueController::class,'store']);
+Route::get('queue',[QueueController::class,'index']);
