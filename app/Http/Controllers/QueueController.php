@@ -10,6 +10,7 @@ class QueueController extends Controller
 {
     public function store(Request $request){
         $queue=Queue::create($request->all());
+        ReadQueueJob::dispatch()->delay(now()->addMinutes(1));
         return $queue;
     }
 
